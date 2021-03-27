@@ -48,6 +48,10 @@ sqllogin="Select * from naqeeb.users where  email='"+req.body.email+"';";
 dbcon.query(sqllogin, async(err,result)=>{
 if(err)
 console.log(err);
+if(result[0]==null)
+{
+    return res.status(404).send("usernot found with given email");
+}
 
 const valid=await bcrypt.compare(req.body.password,result[0].Pswrd)
 
