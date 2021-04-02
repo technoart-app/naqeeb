@@ -6,6 +6,7 @@ var config=require("./properties/awsconfig")
 
 var s3=new aws.S3();
 
+
 s3.config.update({
 
 
@@ -18,6 +19,7 @@ s3.config.update({
 
 
 server.get("/getQuran",(req,res)=>{
+    
 
     var params=
     {
@@ -27,6 +29,8 @@ Expires:100000
 
 
     }
+
+    result="";
   
    switch(req.body.language)
    {
@@ -40,25 +44,31 @@ Expires:100000
    }
 
  
- s3.getSignedUrl("getObject",params,(err,res)=>{
+ s3.getSignedUrl("getObject",params,(err,r)=>{
 
     if(err)
     {
         console.log(err.message)
+        res.status(400).send("not found")
     }
     else{
 
-        console.log(res);
+        res.status(200).send(r)
     }
+
+
 })
 
 
+   
+
+}
 
 
     
 
 
-}
+
   
 
 )
