@@ -32,7 +32,7 @@ Expires:100000
 
     result="";
   
-   switch(req.body.language)
+   switch(req.query.language)
    {
        case "ENG" : params.Key="Al-Quran_ENGLISH.pdf";
        break;
@@ -53,7 +53,11 @@ Expires:100000
     }
     else{
 
-        res.status(200).send(r)
+        res.status(200).send(
+            {
+                url:r
+            }
+        )
     }
 
 
