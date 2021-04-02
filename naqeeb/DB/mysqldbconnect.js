@@ -3,7 +3,7 @@ const propertiesreader=require("properties-reader")
 const path=require("path")
 
 
-var properties=propertiesreader(path.join(__dirname,'../properties/db.properties'));
+var properties=propertiesreader(path.join(__dirname,'../properties/prod.properties'));
 console.log("connected")
 const dbcon=mysql.createConnection(
     

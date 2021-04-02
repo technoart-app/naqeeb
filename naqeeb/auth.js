@@ -25,7 +25,7 @@ auth.post('/adduser',async (req,res)=>{
 
 
     let  sqlinsert=
-    "INSERT INTO `naqeeb`.`users` (`First_Name`, `Last_Name`, `Address`, `Approved`, `IsActive`, `DOB`, `Pswrd`, `salt`, `Email`, `Contact_No`, `verified`, `Gender`, `Role_ID`) VALUES ('"+req.body.first_Name+"', '"+req.body.last_Name+"', '"+req.body.addr+"', 'no', 'yes', '"+req.body.DOB+"', '"+hashedpassword+"', '"+salt+"', '"+req.body.email+"', '"+req.body.contactNo+"', 'no', '"+req.body.gender+"', '"+req.body.role_ID+"');";
+    "INSERT INTO `naqeeb`.`users` (`First_Name`, `Last_Name`, `Address`, `Approved`, `IsActive`, `DOB`, `Pswrd`, `salt`, `Email`, `Contact_No`, `verified`, `Gender`, `Role_ID`) VALUES ('"+req.body.first_Name+"', '"+req.body.last_Name+"', '"+req.body.addr+"', 'no', 'yes', '"+req.body.DOB+"', '"+hashedpassword+"', '"+salt+"', '"+req.body.email+"', '"+req.body.Contact_No+"', 'no', '"+req.body.gender+"', '"+req.body.role_ID+"');";
     console.log(sqlinsert)
      dbcon.query(
  sqlinsert, (err,response)=>{
@@ -35,7 +35,7 @@ auth.post('/adduser',async (req,res)=>{
  
  })
  
- res.send(result)
+ res.status(201).send(result) 
  })
  
   // login request
