@@ -40,6 +40,8 @@ Expires:100000
        break;
        case "URDU": params.Key="Al-Quran_URDU.pdf";
        break;
+       default: 
+       params.Key=req.query.language
 
    }
 
