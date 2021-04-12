@@ -2,7 +2,8 @@ const auth =require("express").Router();
 const dbcon=require("./DB/mysqldbconnect")
 const bodyparser=require("body-parser");
 const bcrypt=require("bcryptjs")
-const jwt=require("jsonwebtoken")
+const jwt=require("jsonwebtoken");
+const { ConfigService } = require("aws-sdk");
 
 
 // requests to add user
@@ -64,6 +65,8 @@ else
 {
    
 const token=jwt.sign({id:result[0].User_ID},"abcdefghijk")
+console.log(  result.User_ID,
+    result.Role_ID)
 res.header('auth-token',token).send({
     User_ID:result.User_ID,
     Role_ID:result.Role_ID
