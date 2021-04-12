@@ -65,7 +65,8 @@ else
    
 const token=jwt.sign({id:result[0].User_ID},"abcdefghijk")
 res.header('auth-token',token).send({
-    result
+    User_ID:result.User_ID,
+    Role_ID:result.Role_ID
 })
 
 }
